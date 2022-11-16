@@ -18,6 +18,8 @@ final class UserTest extends TestCase
 
         $this->assertSame($user1->getName(), 'John');
         $this->assertSame($user2->getName(), 'John'); // changing the name of the user1 changes the name of the user2
+
+        $this->assertSame(spl_object_hash($user1), spl_object_hash($user2));
     }
 
     public function testUserCloningWithoutFriends(): void

@@ -18,6 +18,8 @@ final class CloneAbleUserTest extends TestCase
 
         $this->assertSame($user1->getName(), 'John');
         $this->assertSame($user2->getName(), 'John'); // changing the name of the user1 changes the name of the user2
+
+        $this->assertSame(spl_object_hash($user1), spl_object_hash($user2));
     }
 
     public function testUserCloningWithoutFriends(): void
@@ -31,6 +33,8 @@ final class CloneAbleUserTest extends TestCase
 
         $this->assertSame($user1->getName(), 'John');
         $this->assertSame($user2->getName(), 'Rick'); // changing the name of the user1 DOES NOT CHANGE the name of the user2
+
+        $this->assertNotSame(spl_object_hash($user1), spl_object_hash($user2));
     }
 
     public function testUserCloningWithFriends(): void
@@ -47,6 +51,8 @@ final class CloneAbleUserTest extends TestCase
 
         $this->assertSame($user1->getFriendName(0), 'Colin');
         $this->assertSame($user2->getFriendName(0), 'Martin'); // changing the name of the user1 DOES NOT CHANGE the name of the user2
+
+        $this->assertNotSame(spl_object_hash($user1), spl_object_hash($user2));
     }
 
     public function testUserCloningWithCrossReferenceFriends2(): void
