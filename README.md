@@ -1,5 +1,17 @@
 ##
-The `CloneAbleUser` class allows to create a clone of the object including array of the objects of the same type and allows cross references. 
+The `CloneAbleUser` class allows to create a clone of the object including array of the objects of the same type and allows cross references.
+
+## Usage
+```
+$rick = new CloneAbleUser(1, 'Rick', []);
+$martin = new CloneAbleUser(2, 'Martin', []);
+
+// Make cross refs
+$rick->addFriend($martin);
+$martin->addFriend($rick);
+
+$anotherRick = $rick->clone();
+```
 
 ## Installation
 
@@ -21,3 +33,4 @@ Execute the tests locally with:
 ```
 ./vendor/bin/phpunit
 ```
+
