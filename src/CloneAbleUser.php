@@ -21,9 +21,9 @@ class CloneAbleUser extends User implements CloneAbleInterface
             return $this->hashMap[$objHash];
         }
 
-        $this->hashMap[$objHash] = $this;
-
         $obj = clone $this;
+
+        $this->hashMap[$objHash] = $obj;
 
         $obj->friends = [];
         foreach ($this->friends as $friend)
